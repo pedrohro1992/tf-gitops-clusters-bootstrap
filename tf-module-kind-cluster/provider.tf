@@ -1,2 +1,2 @@
-# Configure the Kind Provider
-provider "kind" {}
+# # Configure the Kind Provider
+# provider "kind" {}
