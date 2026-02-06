@@ -7,11 +7,14 @@ resource "kubernetes_manifest" "crossplane_application" {
       namespace = "argocd"
     }
     spec = {
-      project = "default"
+      project = var.argocd_project_name
       source = {
         repoURL        = var.git_repo_url
         targetRevision = "HEAD"
         path           = var.git_repo_path
+        directory = {
+          recurse = var.directory_recursive
+        }
       }
       destination = {
         server    = "https://kubernetes.default.svc"

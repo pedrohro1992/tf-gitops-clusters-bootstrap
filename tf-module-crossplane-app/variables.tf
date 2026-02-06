@@ -4,6 +4,11 @@ variable "target_namespace" {
   description = "Namespace onde o Crossplane será instalado pelo ArgoCD"
 }
 
+variable "directory_recursive" {
+  type = bool
+  default = false
+}
+
 variable "argocd_application_name" {
   type = string
   default = "crossplane-bootstrap"
@@ -24,4 +29,10 @@ variable "git_repo_path" {
   type        = string
   default     = "crossplane/install"
   description = "Caminho dentro do Git onde está o Helm ou YAMLs do Crossplane"
+}
+
+variable "argocd_project_name" {
+  type = string
+  default = "default"
+  description = "Nome do projeto que o cluster ira viver"
 }
