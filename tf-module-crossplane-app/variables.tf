@@ -4,6 +4,12 @@ variable "target_namespace" {
   description = "Namespace onde o Crossplane será instalado pelo ArgoCD"
 }
 
+variable "create_secret" {
+  type = bool
+  description = "Define se o segredo de acesso ao git sera criado"
+  default = true
+}
+
 variable "directory_recursive" {
   type = bool
   default = false
