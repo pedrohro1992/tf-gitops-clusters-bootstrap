@@ -18,6 +18,12 @@ module "calico" {
   depends_on = [module.kind_cluster]
 }
 
+module "openEBS" {
+  source = "../tf-module-storage-OpenEBS"
+
+  depends_on = [module.calico]
+}
+
 # module "argocd" {
 #   source = "../tf-module-argocd"
 #
