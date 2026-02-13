@@ -18,12 +18,24 @@ variable "extra_port_mappings" {
 
 variable "nodes" {
   type = list(object({
-    role   = string
-    labels = map(string)
+    role           = string
+    enable_storage = bool
+    labels         = map(string)
   }))
+  default = [{
+    labels         = {}
+    enable_storage = false
+    role           = ""
+  }]
 }
 
 variable "pod_network_cidr" {
   type        = string
   description = "CIDR da rede de Pods do cluster"
+}
+
+
+variable "create_cluster_storage" {
+  type    = bool
+  default = false
 }

@@ -5,5 +5,5 @@ resource "null_resource" "register_workload" {
     command = "${path.module}/scripts/prepare-kubeconfig.sh ${var.cluster_name} ${var.crossplane_control_plane_cluster}"
   }
 
-  depends_on = [ kind_cluster.this ]
+  depends_on = [kind_cluster.this]
 }

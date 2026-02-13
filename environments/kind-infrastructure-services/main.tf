@@ -1,9 +1,10 @@
 module "kind_infrastructure" {
   source = "../../modules/tf-module-kind-homelab"
 
-  cluster_name        = "kind-infrastructure-services"
-  pod_network_cidr = "10.244.0.0/16"
-  disable_default_cni = true
+  cluster_name           = "kind-infrastructure-services"
+  pod_network_cidr       = "10.244.0.0/16"
+  disable_default_cni    = true
+  create_cluster_storage = true
 
   extra_port_mappings = [
     {
@@ -18,26 +19,29 @@ module "kind_infrastructure" {
     }
   ]
 
-    nodes = [
+  nodes = [
     {
-      role = "control-plane"
+      role           = "control-plane"
+      enable_storage = true
       labels = {
         ingress-ready = "true"
         platform      = "true"
       }
     },
     {
-      role = "worker"
+      role           = "worker"
+      enable_storage = false
       labels = {
         workload = "general"
-        tier = "application"
+        tier     = "application"
       }
     },
     {
-      role = "worker"
+      role           = "worker"
+      enable_storage = false
       labels = {
         workload = "general"
-        tier = "application"
+        tier     = "application"
       }
     }
   ]

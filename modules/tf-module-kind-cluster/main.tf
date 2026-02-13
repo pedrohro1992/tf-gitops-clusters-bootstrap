@@ -8,7 +8,7 @@ resource "kind_cluster" "this" {
 
     networking {
       disable_default_cni = var.disable_default_cni
-      pod_subnet = var.pod_network_cidr
+      pod_subnet          = var.pod_network_cidr
     }
 
     dynamic "node" {
@@ -29,7 +29,7 @@ resource "kind_cluster" "this" {
         dynamic "extra_port_mappings" {
           for_each = (
             node.value.role == "control-plane"
-        ) ? var.extra_port_mappings : []
+          ) ? var.extra_port_mappings : []
 
           content {
             container_port = extra_port_mappings.value.container_port
@@ -37,7 +37,24 @@ resource "kind_cluster" "this" {
             protocol       = extra_port_mappings.value.protocol
           }
         }
+
+        dynamic "extra_mounts" {
+          for_each = node.value.enable_storage ? [{
+            host_path      = local.storage_path
+            container_path = "/var/openebs"
+          }] : []
+          content {
+            host_path      = extra_mounts.value.host_path
+            container_path = extra_mounts.value.container_path
+          }
+        }
+
       }
     }
   }
+
+  depends_on = [
+    null_resource.create_storage
+
+  ]
 }
