@@ -67,3 +67,14 @@ variable "crossplane_control_plane_cluster" {
   default     = ""
 }
 
+variable "gitea_registry" {
+  description = "Hostname:port Gitea Registry"
+  type        = string
+  default     = "gitea.cacetinho.internal.infra:3000"
+}
+
+variable "vault_pki_mount" {
+  description = "Vault PKI mount PATH"
+  type        = string
+  default     = "pki_int"
+}

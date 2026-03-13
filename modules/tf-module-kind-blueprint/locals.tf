@@ -7,5 +7,6 @@ locals {
 
   git_repo_url_distribution = "http://gitea-server:3000/cacetinho-sa-cloudnative/kubernetes-falo-distribution.git"
 
+  vault_kubernetes_api_address = ""
 
 }

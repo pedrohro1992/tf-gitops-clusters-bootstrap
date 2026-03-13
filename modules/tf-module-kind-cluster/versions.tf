@@ -5,5 +5,13 @@ terraform {
       source  = "tehcyx/kind"
       version = "0.10.0" # Verifique a versão mais atual disponível
     }
+    vault = {
+      source  = "hashicorp/vault"
+      version = "~> 4.0"
+    }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.0"
+    }
   }
 }
