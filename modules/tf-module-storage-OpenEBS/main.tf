@@ -3,7 +3,7 @@ resource "helm_release" "openebs" {
   repository       = "https://openebs.github.io/openebs"
   chart            = "openebs"
   version          = "4.1.3"
-  namespace = "openebs"
+  namespace        = "openebs"
   create_namespace = true
 
   values = [

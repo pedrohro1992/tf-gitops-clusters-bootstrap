@@ -6,8 +6,7 @@ terraform {
       version = "0.10.0" # Verifique a versão mais atual disponível
     }
     vault = {
-      source  = "hashicorp/vault"
-      version = "~> 4.0"
+      source = "hashicorp/vault"
     }
     null = {
       source  = "hashicorp/null"
