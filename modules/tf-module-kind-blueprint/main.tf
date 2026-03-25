@@ -45,12 +45,3 @@ module "eso_infra" {
   vault_infra_secret_path = var.vault_infra_secret_path
   vault_addr              = var.vault_addr
 }
-
-
-
-# module "ingress_nginx" {
-#   source = "../tf-module-ingress-nginx"
-#
-#   depends_on = [module.calico]
-# }
-#
